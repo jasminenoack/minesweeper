@@ -1,16 +1,9 @@
-Minesweeper checklist
+This is a minesweeper game you can run it locally by downloading the repository and opening index.html file in the base directory. It currently requires access to the internet as it uses underscore and jQuery cdns for some additional functionality that I did not have time to build myself.
 
-- build html page
-- render the board
-- listen for left clicks
-- on click reveal a square
-- generate a random board
-- cascade on click
-- display win message
-- display game over message
-- listen for a right click
-- allow changing of board size
-- style
+There are also tests that can be viewed by opening jasmine/SpecRunner.html
 
-
-<!-- 30 x 15 with 20 mines -->
+In the future more features could be added:
+- better styling
+- ability to mark mines
+- win and lose messages are more visible
+- allow changing of the board size. 
