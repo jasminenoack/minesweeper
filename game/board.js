@@ -20,7 +20,10 @@
     }
 
     Board.prototype.generateBoard = function generateBoard () {
-        this.spots = new Array(this.height * this.width)
+        this.spots = []
+        for (var i = 0; i < this.height * this.width; i++) {
+            this.spots.push({cleared: false, mine:false})
+        }
     }
 
     Board.prototype.addMines = function addMines () {
@@ -34,7 +37,7 @@
 
         // add the mines to the board
         for (var i = 0; i < mineLocations.length; i++) {
-            this.spots[mineLocations[i]] = true
+            this.spots[mineLocations[i]].mine = true
         }
     }
 })();

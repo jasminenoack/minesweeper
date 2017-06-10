@@ -1,0 +1,16 @@
+.spot {
+    height: 26px;
+    width:26px;
+    border: 2px solid black;
+    display: block;
+    float: right;
+}
+.cleared {
+    background: blue;
+}
+.mine {
+    background: red;
+}
+#minesweeper {
+    width: 900px;
+}

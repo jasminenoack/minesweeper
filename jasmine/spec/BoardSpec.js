@@ -34,14 +34,27 @@ describe("Board", function() {
 
         it("it places mines in the board", function () {
             expect(
-                _.filter(board.spots, function (value) {return value}).length
+                _.filter(board.spots, function (value) {return value.mine}).length
             ).toEqual(board.mines)
         })
 
         it("it places mines randomly", function () {
             board1 = board
             board2 = new Board()
+            expect(_.isEqual(board.spots, board1.spots)).toBeTruthy()
             expect(_.isEqual(board.spots, board2.spots)).toBeFalsy()
+        })
+    })
+
+    describe("board behavior", function () {
+        beforeEach(function() {
+            board = new Board()
+        });
+
+        it("clears a spot", function() {
+            expect(board.spots[0].cleared).toBeFalsy()
+            board.clearSpot(0)
+            expect(board.spots[0].cleared).toBeTruthy()
         })
     })
 });
