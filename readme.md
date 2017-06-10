@@ -6,4 +6,7 @@ In the future more features could be added:
 - better styling
 - ability to mark mines
 - win and lose messages are more visible
-- allow changing of the board size. 
+- allow changing of the board size.
+
+
+The site is available online at [http://jasminenoack.com/minesweeper/](http://jasminenoack.com/minesweeper/)
