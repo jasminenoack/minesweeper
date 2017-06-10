@@ -1,10 +1,7 @@
 ;(function () {
     "use strict"
     var Board = window.minesweeper.Board
-    var board = new Board()
-    var height = board.height
-    var width = board.width
-    var blockCount = board.spots.length
+    var board, height, width, blockCount
 
     var $boardElement = $("#minesweeper")
 
@@ -30,7 +27,6 @@
     function renderBoard() {
         var spots = board.spots
         $boardElement.empty()
-
         for (var i = 0; i < spots.length; i++) {
             var $div = $('<div class="spot"></div>')
             var spot = spots[i]
@@ -40,19 +36,30 @@
         }
     }
 
+    function startBoard() {
+        board = new Board()
+        height = board.height
+        width = board.width
+        blockCount = board.spots.length
+        renderBoard()
+    }
+
     function cascade (spot) {
         var blocksToProcess = board.neighbors(spot)
-        for (var i = 0; i < blocksToProcess.length; i++) {
-            var index = blocksToProcess[i]
+        while(blocksToProcess.length) {
+            var index = blocksToProcess.shift()
             var spot = board.spots[index]
             var $div = $($(".spot")[index])
             if (!spot.cleared) {
                 board.clearSpot(index)
                 setUpCell($div, spot, index)
                 if (!board.mineCount(index)) {
-                    cascade(index)
+                    blocksToProcess = blocksToProcess.concat(board.neighbors(index))
                 }
             }
+        }
+        if (board.won()) {
+            $(".won").removeClass("hidden")
         }
     }
 
@@ -61,10 +68,24 @@
         var index = $spot.data("index")
         board.clearSpot(index)
         renderBoard()
-        if (!board.mineCount(index)) {
+        if (board.lost) {
+            board.clearAll()
+            renderBoard()
+            $(".lost").removeClass("hidden")
+        } else if (!board.mineCount(index)) {
             cascade(index)
+        } else {
+            if (board.won()) {
+                $(".won").removeClass("hidden")
+            }
         }
     })
 
-    renderBoard(board.height, board.width, board.spots)
+    $("button").click(function () {
+        startBoard();
+        $(".lost").addClass("hidden")
+        $(".won").addClass("hidden")
+    })
+
+    startBoard()
 })();

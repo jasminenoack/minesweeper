@@ -11,6 +11,7 @@
         this.width = 30
         this.height = 15
         this.mines = 20
+        this.lost = false
 
         // create an array for the board
         this.generateBoard()
@@ -44,6 +45,9 @@
     Board.prototype.clearSpot = function clearSpot (i) {
         if (!this.spots[i].cleared) {
             this.spots[i].cleared = true
+            if (this.spots[i].mine) {
+                this.lost = true
+            }
         }
     }
 
@@ -121,5 +125,20 @@
 
         this.spots[i].mineCount = count
         return this.spots[i].mineCount
+    }
+
+    Board.prototype.clearAll = function mineCount () {
+        for (var i = 0; i < this.spots.length; i++) {
+            this.spots[i].cleared = true
+        }
+    }
+
+    Board.prototype.won = function won () {
+        for (var i = 0; i < this.spots.length; i++) {
+            if (this.spots[i].cleared == false && this.spots[i].mine == false) {
+                return false
+            }
+        }
+        return true
     }
 })();

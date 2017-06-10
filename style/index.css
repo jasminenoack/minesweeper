@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 .cleared {
-    background: aliceblue;
+    background: lightblue;
     font-size: 20px;
     padding: 2px;
 }
@@ -27,4 +27,8 @@
 
 .red {
     color: red
+}
+
+.hidden {
+    display: none;
 }
