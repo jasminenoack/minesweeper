@@ -11,8 +11,30 @@
         this.width = 30
         this.height = 15
         this.mines = 20
+
+        // create an array for the board
+        this.generateBoard()
+
+        // add mines to the board
+        this.addMines()
     }
 
-    console.log(Board)
+    Board.prototype.generateBoard = function generateBoard () {
+        this.spots = new Array(this.height * this.width)
+    }
 
+    Board.prototype.addMines = function addMines () {
+        var mineLocations = []
+        while (mineLocations.length < this.mines) {
+            var randomLocation = _.random(this.spots.length - 1)
+            if (mineLocations.indexOf(randomLocation) === -1) {
+                mineLocations.push(randomLocation)
+            }
+        }
+
+        // add the mines to the board
+        for (var i = 0; i < mineLocations.length; i++) {
+            this.spots[mineLocations[i]] = true
+        }
+    }
 })();

@@ -19,20 +19,29 @@ describe("Board", function() {
     })
 
     describe("board setup", function () {
-        xit("sets up height and width of the board", function () {
-
+        beforeEach(function() {
+            board = new Board()
+        });
+        it("sets up height and width and mines of the board", function () {
+            expect(board.width).toEqual(30)
+            expect(board.height).toEqual(15)
+            expect(board.mines).toEqual(20)
         })
 
-        xit("it creates an array for the board", function () {
-
+        it("it creates an array for the board", function () {
+            expect(board.spots.length).toEqual(board.height * board.width)
         })
 
-        xit("it places mines in the board", function () {
-
+        it("it places mines in the board", function () {
+            expect(
+                _.filter(board.spots, function (value) {return value}).length
+            ).toEqual(board.mines)
         })
 
-        xit("it places mines randomly", function () {
-
+        it("it places mines randomly", function () {
+            board1 = board
+            board2 = new Board()
+            expect(_.isEqual(board.spots, board2.spots)).toBeFalsy()
         })
     })
 });
