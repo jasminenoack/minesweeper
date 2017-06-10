@@ -102,4 +102,24 @@
         this.spots[i].neighbor_blocks = neighbor_blocks
         return this.spots[i].neighbor_blocks
     }
+
+    Board.prototype.mineCount = function mineCount (i) {
+        var neighbors = this.neighbors(i)
+        var count = 0
+
+        // if this is previously calculated return it
+        if (this.spots[i].mineCount) {
+            return this.spots[i].mineCount
+        }
+
+        // count mines in neighbor tiles
+        for (var i = 0; i < neighbors.length; i++) {
+            if (this.spots[neighbors[i]].mine) {
+                count++
+            }
+        }
+
+        this.spots[i].mineCount = count
+        return this.spots[i].mineCount
+    }
 })();

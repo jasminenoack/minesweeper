@@ -178,5 +178,20 @@ describe("Board", function() {
             var expected = [192, 193, 194, 222, 224, 252, 253, 254]
             expect(neighbors).toEqual(expected)
         })
+
+        it("finds the mineCount of a block", function () {
+            var spots = board.spots
+            var testSection = [192, 193, 194, 222, 224, 252, 253, 254]
+            for (var i = 0; i < testSection.length; i++) {
+                spots[testSection[i]].mine = false
+            }
+            expect(board.mineCount(223)).toEqual(0)
+
+            for (var i = 0; i < testSection.length; i++) {
+                board.spots[223].mineCount = undefined
+                spots[testSection[i]].mine = true
+                expect(board.mineCount(223)).toEqual(i + 1)
+            }
+        })
     })
 });
