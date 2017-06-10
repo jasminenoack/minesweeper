@@ -10,3 +10,5 @@ In the future more features could be added:
 
 
 The site is available online at [http://jasminenoack.com/minesweeper/](http://jasminenoack.com/minesweeper/)
+The tests can be seen online
+[here](http://jasminenoack.com/minesweeper/jasmine/SpecRunner.html)
