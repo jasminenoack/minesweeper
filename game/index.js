@@ -8,6 +8,17 @@
 
     var $boardElement = $("#minesweeper")
 
+    function setUpCell($div, spot, i) {
+        if (spot.cleared) {
+            $div.addClass("cleared")
+            if (spot.mine) {
+                $div.addClass("mine")
+            } else {
+                $div.text(board.mineCount(i))
+            }
+        }
+    }
+
     function renderBoard() {
         var spots = board.spots
         $boardElement.empty()
@@ -15,23 +26,37 @@
         for (var i = 0; i < spots.length; i++) {
             var $div = $('<div class="spot"></div>')
             var spot = spots[i]
-            if (spot.cleared) {
-                $div.addClass("cleared")
-                if (spot.mine) {
-                    $div.addClass("mine")
-                }
-            }
             $div.data("index", i)
+            setUpCell($div, spot, i)
             $boardElement.append($div)
         }
     }
 
-    renderBoard(board.height, board.width, board.spots)
+    function cascade (spot) {
+        var blocksToProcess = board.neighbors(spot)
+        for (var i = 0; i < blocksToProcess.length; i++) {
+            var index = blocksToProcess[i]
+            var spot = board.spots[index]
+            var $div = $($(".spot")[index])
+            if (!spot.cleared) {
+                board.clearSpot(index)
+                setUpCell($div, spot, index)
+                if (!board.mineCount(index)) {
+                    cascade(index)
+                }
+            }
+        }
+    }
 
     $boardElement.click(".spot", function (event) {
         var $spot = $(event.target)
         var index = $spot.data("index")
         board.clearSpot(index)
         renderBoard()
+        if (!board.mineCount(index)) {
+            cascade(index)
+        }
     })
+
+    renderBoard(board.height, board.width, board.spots)
 })();
