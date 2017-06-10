@@ -40,4 +40,10 @@
             this.spots[mineLocations[i]].mine = true
         }
     }
+
+    Board.prototype.clearSpot = function clearSpot (i) {
+        if (!this.spots[i].cleared) {
+            this.spots[i].cleared = true
+        }
+    }
 })();

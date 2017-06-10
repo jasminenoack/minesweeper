@@ -8,7 +8,8 @@
 
     var $boardElement = $("#minesweeper")
 
-    function renderBoard(height, width, spots) {
+    function renderBoard() {
+        var spots = board.spots
         $boardElement.empty()
 
         for (var i = 0; i < spots.length; i++) {
@@ -23,7 +24,6 @@
             $div.data("index", i)
             $boardElement.append($div)
         }
-
     }
 
     renderBoard(board.height, board.width, board.spots)
@@ -32,5 +32,6 @@
         var $spot = $(event.target)
         var index = $spot.data("index")
         board.clearSpot(index)
+        renderBoard()
     })
 })();
