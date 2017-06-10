@@ -128,46 +128,55 @@ describe("Board", function() {
         it("finds neighbors for top left corner", function () {
             var neighbors = board.neighbors(0)
             var expected = [1, 30, 31]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for top right corner", function () {
             var neighbors = board.neighbors(29)
             var expected = [28, 58, 59]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for bottom left corner", function () {
             var neighbors = board.neighbors(420)
             var expected = [390, 391, 421]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for bottom right corner", function () {
             var neighbors = board.neighbors(449)
             var expected = [418, 419, 448]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for mid left", function () {
             var neighbors = board.neighbors(180)
             var expected = [150, 151, 181, 210, 211]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for mid right", function () {
             var neighbors = board.neighbors(239)
             var expected = [208,209, 238, 268, 269]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for mid bottom", function () {
             var neighbors = board.neighbors(433)
             var expected = [402, 403, 404, 432, 434]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for mid top", function () {
             var neighbors = board.neighbors(12)
             var expected = [11, 13, 41, 42, 43]
+            expect(neighbors).toEqual(expected)
         })
 
         it("finds neighbors for center block", function () {
             var neighbors = board.neighbors(223)
             var expected = [192, 193, 194, 222, 224, 252, 253, 254]
+            expect(neighbors).toEqual(expected)
         })
     })
 });

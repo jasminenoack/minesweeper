@@ -62,4 +62,44 @@
     Board.prototype.lastColumn = function lastColumn (i) {
         return (i + 1) % this.width == 0
     }
+
+    Board.prototype.neighbors = function neighbors (i) {
+        var firstRow = this.firstRow(i)
+        var lastRow = this.lastRow(i)
+        var firstColumn = this.firstColumn(i)
+        var lastColumn = this.lastColumn(i)
+
+        // if neighbors are already determined return them.
+        if (this.spots[i].neighbor_blocks) {
+            return this.spots[i].neighbor_blocks
+        }
+
+        var neighbor_blocks = []
+        if (!firstRow && !firstColumn) {
+            neighbor_blocks.push(i - this.width - 1)
+        }
+        if (!firstRow) {
+            neighbor_blocks.push(i - this.width)
+        }
+        if (!firstRow && !lastColumn) {
+            neighbor_blocks.push(i - this.width + 1)
+        }
+        if (!firstColumn) {
+            neighbor_blocks.push(i - 1)
+        }
+        if (!lastColumn) {
+            neighbor_blocks.push(i + 1)
+        }
+        if (!lastRow && !firstColumn) {
+            neighbor_blocks.push(i + this.width - 1)
+        }
+        if (!lastRow) {
+            neighbor_blocks.push(i + this.width)
+        }
+        if (!lastRow && !lastColumn) {
+            neighbor_blocks.push(i + this.width + 1)
+        }
+        this.spots[i].neighbor_blocks = neighbor_blocks
+        return this.spots[i].neighbor_blocks
+    }
 })();
