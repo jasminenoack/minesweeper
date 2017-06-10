@@ -1,16 +1,30 @@
 .spot {
-    height: 26px;
-    width:26px;
+    height: 30px;
+    width:30px;
     border: 2px solid black;
     display: block;
     float: left;
+    box-sizing: border-box;
 }
 .cleared {
-    background: blue;
+    background: aliceblue;
+    font-size: 20px;
+    padding: 2px;
 }
 .mine {
     background: red;
 }
 #minesweeper {
     width: 900px;
+}
+
+.blue {
+    color: blue
+}
+.orange {
+    color: orange
+}
+
+.red {
+    color: red
 }

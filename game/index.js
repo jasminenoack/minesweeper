@@ -14,7 +14,15 @@
             if (spot.mine) {
                 $div.addClass("mine")
             } else {
-                $div.text(board.mineCount(i))
+                var mineCount = board.mineCount(i)
+                $div.text(mineCount)
+                if (mineCount < 1) {
+                    $div.addClass("blue")
+                } else if (mineCount < 2) {
+                    $div.addClass("orange")
+                } else {
+                    $div.addClass("red")
+                }
             }
         }
     }
