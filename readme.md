@@ -10,4 +10,7 @@ Minesweeper checklist
 - display game over message
 - listen for a right click
 - allow changing of board size
-- style 
+- style
+
+
+<!-- 30 x 15 with 20 mines -->
