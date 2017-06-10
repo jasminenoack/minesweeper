@@ -3,7 +3,7 @@
     width:26px;
     border: 2px solid black;
     display: block;
-    float: right;
+    float: left;
 }
 .cleared {
     background: blue;

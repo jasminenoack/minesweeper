@@ -46,4 +46,20 @@
             this.spots[i].cleared = true
         }
     }
+
+    Board.prototype.firstColumn = function firstColumn (i) {
+        return i % this.width == 0
+    }
+
+    Board.prototype.firstRow = function firstColumn (i) {
+        return i < this.width
+    }
+
+    Board.prototype.lastRow = function lastRow (i) {
+        return i > this.width * this.height - (this.width + 1)
+    }
+
+    Board.prototype.lastColumn = function lastColumn (i) {
+        return (i + 1) % this.width == 0
+    }
 })();
