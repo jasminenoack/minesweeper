@@ -112,19 +112,15 @@
         var number_mines = 0
 
         // if this is previously calculated return it
-        // if (this.spots[i].mineCount) {
-        //     return this.spots[i].mineCount
-        // }
+        if (this.spots[i].mineCount) {
+            return this.spots[i].mineCount
+        }
 
         // count mines in neighbor tiles
         for (var j = 0; j < neighbors.length; j++) {
             if (this.spots[neighbors[j]].mine) {
                 number_mines++
             }
-        }
-        if (this.spots[i].mineCount && this.spots[i].mineCount != number_mines) {
-            console.log(this.spots[i].mineCount, number_mines)
-            console.log("WTF")
         }
 
         this.spots[i].mineCount = number_mines
