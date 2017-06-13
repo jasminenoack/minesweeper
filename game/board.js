@@ -4,13 +4,13 @@
         window.minesweeper = {}
     }
 
-    var Board = window.minesweeper.Board = function Board () {
+    var Board = window.minesweeper.Board = function Board (width, height, mines) {
         if(!(this instanceof Board)) {
             return new Board()
         }
-        this.width = 30
-        this.height = 15
-        this.mines = 20
+        this.width = width || 30
+        this.height = height || 15
+        this.mines = mines || 20
         this.lost = false
 
         // create an array for the board
@@ -109,21 +109,25 @@
 
     Board.prototype.mineCount = function mineCount (i) {
         var neighbors = this.neighbors(i)
-        var count = 0
+        var number_mines = 0
 
         // if this is previously calculated return it
-        if (this.spots[i].mineCount) {
-            return this.spots[i].mineCount
-        }
+        // if (this.spots[i].mineCount) {
+        //     return this.spots[i].mineCount
+        // }
 
         // count mines in neighbor tiles
-        for (var i = 0; i < neighbors.length; i++) {
-            if (this.spots[neighbors[i]].mine) {
-                count++
+        for (var j = 0; j < neighbors.length; j++) {
+            if (this.spots[neighbors[j]].mine) {
+                number_mines++
             }
         }
+        if (this.spots[i].mineCount && this.spots[i].mineCount != number_mines) {
+            console.log(this.spots[i].mineCount, number_mines)
+            console.log("WTF")
+        }
 
-        this.spots[i].mineCount = count
+        this.spots[i].mineCount = number_mines
         return this.spots[i].mineCount
     }
 

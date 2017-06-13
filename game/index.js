@@ -3,9 +3,14 @@
     var Board = window.minesweeper.Board
     var board, height, width, blockCount
 
+    window.board = board
+
     var $boardElement = $("#minesweeper")
 
     function setUpCell($div, spot, i) {
+        if ($div.length > 1) {
+            console.log("WTF")
+        }
         if (spot.cleared) {
             $div.addClass("cleared")
             if (spot.mine) {
@@ -25,6 +30,7 @@
     }
 
     function renderBoard() {
+        console.log("RENDER")
         var spots = board.spots
         $boardElement.empty()
         for (var i = 0; i < spots.length; i++) {
@@ -37,6 +43,7 @@
     }
 
     function startBoard() {
+        // board = new Board(8, 8, 10)
         board = new Board()
         height = board.height
         width = board.width
@@ -67,7 +74,7 @@
         var $spot = $(event.target)
         var index = $spot.data("index")
         board.clearSpot(index)
-        renderBoard()
+        setUpCell($spot, board.spots[index], index)
         if (board.lost) {
             board.clearAll()
             renderBoard()
