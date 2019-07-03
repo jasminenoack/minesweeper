@@ -1,14 +1,15 @@
-This is a minesweeper game you can run it locally by downloading the repository and opening index.html file in the base directory. It currently requires access to the internet as it uses underscore and jQuery cdns for some additional functionality that I did not have time to build myself.
+# setup
+To set up the project run `npm install`.
 
-There are also tests that can be viewed by opening jasmine/SpecRunner.html
+# Testing
+To run the test suite run `npm run test`.
 
-In the future more features could be added:
-- better styling
-- ability to mark mines
-- win and lose messages are more visible
-- allow changing of the board size.
+# Entry
+The html entry point is `index.html`.
+The js enty point is `game/index.js`.
 
+# Build
+To build the js run `npm run build`
+This will build the code in `game/index.js` => `dist/index.js`.
 
-The site is available online at [http://jasminenoack.com/minesweeper/](http://jasminenoack.com/minesweeper/)
-The tests can be seen online
-[here](http://jasminenoack.com/minesweeper/jasmine/SpecRunner.html)
+The site is available online at http://jasminenoack.com/minesweeper/ 

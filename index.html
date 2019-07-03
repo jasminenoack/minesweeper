@@ -3,16 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>Minesweeper</title>
+        <link rel="stylesheet" href="style/font-awesome.css">
         <link rel="stylesheet" href="style/index.css">
     </head>
     <body>
-        <div id="minesweeper">
+        <h1>Minesweeper</h1>
+        <select id="difficulty">
+          <option data-height=8 data-width=8 data-mines=10 default>Beginner(8 X 8 X 10)</option>
+          <option data-height=16 data-width=16 data-mines=40 default>Intermediate(16 X 16 X 40)</option>
+          <option data-height=24 data-width=24 data-mines=99 default>Hard(24 X 24 X 99)</option>
+        </select>
+        <h2 id="mine-count">10</h2>
+        <div class="wrapper" id="wrapper">
+            <div id="minesweeper" class="clearfix"></div>
+            <div id="lost" class="lost hidden"><h1>You lost! </h1><button>Try Again</button></div>
+            <div id="won" class="won hidden"><h1>You Won! </h1><button>Play Again</button></div> 
         </div>
-        <div class="lost hidden">You lost <button>Try Again</button></div>
-        <div class="won hidden">You Won <button>Play Again</button></div> 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script src="game/board.js"></script>
-        <script src="game/index.js"></script>
+        <script src="dist/index.js"></script>
     </body>
 </html>
